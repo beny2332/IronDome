@@ -1,4 +1,6 @@
 using IronDome.Models;
+using IronDome.DAL;
+
 using Microsoft.AspNetCore.Mvc;
 using System.Diagnostics;
 
@@ -23,6 +25,20 @@ namespace IronDome.Controllers
             return View();
         }
 
+        public IActionResult Attacks() 
+        {
+            return View(Data.Get.Threats.ToList());
+        }
+
+        public IActionResult CreateAttack() 
+        {
+            return View();
+        }
+
+        public IActionResult DefenceSystem() 
+        {
+            return View();
+        }
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
         {

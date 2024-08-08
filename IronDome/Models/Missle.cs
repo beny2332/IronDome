@@ -7,6 +7,6 @@ namespace IronDome.Models
         [Key]
         public int id { get; set; }
         public string ? missle_type {  get; set; }
-        public int? travel_speed { get; set; }
+        public int travel_speed { get; set; }
     }
 }

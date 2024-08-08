@@ -1,0 +1,47 @@
+﻿@model IEnumerable<IronDome.Models.DefenceAmmunition>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Defence Ammuniton</h1>
+
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.id)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.amount)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.id)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.name)
+            </td>
+      
+            <td>
+                    <form asp-action="updateDefenceAmmiunition" method="get">
+                    <input name="amount" value="@item.amount" />
+                    <input name="dfid" hidden="hidden" value="@item.id" />
+                    <input type="submit" value="Update" />
+                </form>
+
+            </td>
+            
+        </tr>
+}
+    </tbody>
+</table>
