@@ -4,7 +4,7 @@
     ViewData["Title"] = "Index";
 }
 
-<h1>Threats</h1>
+<h1>Index</h1>
 
 <p>
     <a asp-action="Create">Create New</a>
@@ -29,7 +29,7 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                    @Html.DisplayFor(modelItem => item.Id)
+                @Html.DisplayFor(modelItem => item.Id)
             </td>
             <td>
                     @Html.DisplayFor(modelItem => item.status)
@@ -38,20 +38,17 @@
                 @Html.DisplayFor(modelItem => item.Org.name)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.type.name)
-            </td>
-                <td >
-                @if (item.status == IronDome.Utils.ThreatStatus.Inactive)
-                {
-                    @Html.ActionLink("Launch Attack", "Launch", new { id = item.Id })
-                } 
-                else
-                {
-                    <p>@item.fire_at</p>
-                }
+                @Html.DisplayFor(modelItem => item.missle_type.missle_type)
             </td>
             <td>
-                    <button onclick="invokeLaunch(@item.Id, @item.response_time,' @($"{item.Org.name} {item.type.name}")')">rt launch</button>
+                @if (item.status == IronDome.Utils.ThreatStatus.Inactive)
+                    {
+                        @Html.ActionLink("Launch Attack", "Launch", new { id = item.Id })
+                    } 
+                    else
+                    {
+                        <p>@item.fire_at</p>
+                    }
             </td>
         </tr>
 }

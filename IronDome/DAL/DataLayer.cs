@@ -18,9 +18,9 @@ namespace IronDome.DAL
         {
             if (!Missles.Any())
             {
-                Missle drone = new Missle { name = "Drone", travel_speed = 300 };
-                Missle rocket = new Missle { name = "Rocket", travel_speed = 880 };
-                Missle balistic = new Missle { name = "BalisticMissle", travel_speed = 18000 };
+                Missle drone = new Missle { missle_type = "Drone", travel_speed = 300 };
+                Missle rocket = new Missle { missle_type = "Rocket", travel_speed = 880 };
+                Missle balistic = new Missle { missle_type = "BalisticMissle", travel_speed = 18000 };
                 Missles.AddRange(rocket, drone, balistic);
                 SaveChanges();
             }
@@ -48,7 +48,7 @@ namespace IronDome.DAL
             if (!Threats.Any()) 
             {
                 TerrorOrg? hamas = TerrorOrgs.FirstOrDefault(t => t.name == "Hamas");
-                Missle? rocket1 = Missles.FirstOrDefault(m => m.name == "Rocket");
+                Missle? rocket1 = Missles.FirstOrDefault(m => m.missle_type == "Rocket");
 
                 if (hamas != null && rocket1 != null) 
                     Threats.AddRange
@@ -56,7 +56,7 @@ namespace IronDome.DAL
                         new Threat
                         {
                             Org = hamas,
-                            type = rocket1
+                            missle_type = rocket1
                         }
                     );
                 
