@@ -14,7 +14,7 @@ namespace IronDome.Models
         [Key]
         public int Id { get; set; }
 
-        public Missle missle_type { get; set; }
+        public Missle type { get; set; }
 
         public TerrorOrg Org  { get; set; }
         
@@ -27,7 +27,7 @@ namespace IronDome.Models
         {
             get  
             {
-                return (Org.distance / missle_type.travel_speed) * 3600; 
+                return(int)( ((double)Org.distance / (double)type.travel_speed) * 3600); 
             }  
         }
     }
